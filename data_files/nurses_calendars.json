@@ -1,0 +1,24 @@
+ [
+   {
+    "email": "anna.kirch@princeton.plainsboro.us",
+    "password": "opium",
+    "role": "nurse",
+    "speciality": "",
+    "tasks": 
+      [
+      {
+        "date": "26/11/2021",
+        "start_time": "09:00",
+        "description": "Clinic Duty",
+        "end_time": "11:00"
+      }, 
+      {
+        "date": "26/12/2021",
+        "start_time": "11:00",
+        "description": "Assist and help Dr. Robert Chase at Mr Allan's Leg Surgery",
+        "end_time": "17:00"
+      }
+      ]
+    }
+ ]
+    

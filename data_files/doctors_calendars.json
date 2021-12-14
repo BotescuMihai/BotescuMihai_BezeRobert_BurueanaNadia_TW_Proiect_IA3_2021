@@ -1,0 +1,59 @@
+[
+  {
+    "email": "lisa.cuddy@princeton.plainsboro.us",
+    "password": "l3fc4",
+    "role": "admin",
+    "speciality": "endocrinologyst",
+    "tasks": 
+    {
+      "26/11/2021": 
+      [
+      {
+      "start_time": "09:00",
+        "description": "Clinic Duty",
+        "end_time": "11:00"
+      }, 
+      {
+        "start_time": "11:00",
+        "description": "Important appointment with Dr. Juan Heng",
+        "end_time": "12:00"
+      },
+      {
+        "start_time": "12:00",
+        "description": "Getting the list of free rooms in the hospital",
+        "end_time": "15:00"
+      },
+      {
+      "start_time": "15:00",
+        "description": "Clinic Duty",
+        "end_time": "17:00"
+      }
+      ],
+      "27/11/2021":
+      {
+        
+      }
+    }
+  },
+  {
+    "email": "robert.chase@princeton.plainsboro.us",
+    "password": "fas21",
+    "role": "doctor",
+    "speciality": "surgeon",
+    "tasks": 
+    {
+      "26/11/2021": 
+      [
+      {
+      "start_time": "09:00",
+        "description": "Clinic Duty",
+        "end_time": "11:00"
+      }, 
+      {
+        "start_time": "11:00",
+        "description": "Mr Allan's Leg Surgery",
+        "end_time": "17:00"
+      }
+    }
+  }
+]
