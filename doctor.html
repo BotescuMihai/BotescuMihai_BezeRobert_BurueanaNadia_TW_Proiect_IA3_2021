@@ -27,6 +27,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
 
   <!-- =======================================================
   * Template Name: Restaurantly - v3.7.0
@@ -78,10 +80,9 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link scrollto" href="#registration.html">Patient list</a>
-              </li>
-
-             
+                <input type='hidden' id='patients' value='{{ patients }}'>
+                <a class="nav-link scrollto" onclick='loadPatients()'>Patient list</a>
+              </li>           
              <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -172,5 +173,16 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+
+
+<script>
+function loadPatients(){
+  var patients = document.querySelector('#patients').value;
+  Swal.fire({
+  icon: "info",
+  title: "The List of Patients",
+  html: patients });
+}
+</script>
 
 </html>

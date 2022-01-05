@@ -8,10 +8,10 @@
   <title>Admin Page</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <link rel="stylesheet" href="assets/css/fancy_popup.css">
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -27,6 +27,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
 
   <!-- =======================================================
   * Template Name: Restaurantly - v3.7.0
@@ -47,13 +49,13 @@
         <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mon-Sat: 11AM - 23PM</span></i>
       </div>
 
-      <div class="languages d-none d-md-flex align-items-center">
+      <!--<div class="languages d-none d-md-flex align-items-center">
         <ul>
            <li>En</li>
           <li><a href="#">De</a></li>
           
         </ul>
-      </div>
+      </div>-->
     </div>
   </div>
 
@@ -90,22 +92,60 @@
               </li>
 
               <li class="nav-item">
-                
-                 <a class="nav-link scrollto" href="#tab-3"  > Doctors</a>
+                 <input type="hidden"  id="docs" value="{{ doctors }}">
+                 <a class="nav-link scrollto" onclick='loadDocs()'> Doctors</a>
+              </li>
+              <script>
+function loadDocs(){
+  var doctor = document.querySelector('#docs').value;
+ /* var names = doctor.split(';');
+  var finaltext = '';
+  for(var i=0; i < names.length; i++)
+    finaltext += names[i] + "<br>"; */
+  Swal.fire({
+  icon: "info",
+  title: "The List of Doctors",
+  html: doctor });
+}
+                </script>
+               <li class="nav-item">
+                 <input type="hidden" id="patients" value="{{ patients }}"> 
+                 <a class="nav-link scrollto" onclick="loadPatients()">Patients</a>
               </li>
                <li class="nav-item">
-                
-                 <a class="nav-link scrollto" href="#tab-3">Patients</a>
+                 <input type="hidden"  id="nurses" value="{{ nurses }}">
+                 <a class="nav-link scrollto" onclick="loadNurses()">Nurses</a>
               </li>
+               <script>
+function loadNurses(){
+  var nurse = document.querySelector('#nurses').value;
+ /* var names = doctor.split(';');
+  var finaltext = '';
+  for(var i=0; i < names.length; i++)
+    finaltext += names[i] + "<br>"; */
+  Swal.fire({
+  icon: "info",
+  title: "The List of Nurses",
+  html: nurse });
+}
+                </script>
                <li class="nav-item">
-                
-                 <a class="nav-link scrollto" href="#tab-3">Nurses</a>
+                <input type="hidden"  id="receptionists" value="{{ receptionists }}">
+                 <a class="nav-link scrollto" onclick="loadReceptionists()" >Receptionist</a>
               </li>
-               <li class="nav-item">
-                
-                 <a class="nav-link scrollto" href="#tab-3">Receptionist</a>
-              </li>
-                
+                 <script>
+function loadReceptionists(){
+  var receptionist = document.querySelector('#receptionists').value;
+ /* var names = doctor.split(';');
+  var finaltext = '';
+  for(var i=0; i < names.length; i++)
+    finaltext += names[i] + "<br>"; */
+  Swal.fire({
+  icon: "info",
+  title: "The List of Receptionists",
+  html: receptionist });
+}
+                </script>
              <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -182,6 +222,7 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
+  
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
@@ -192,5 +233,15 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+
+<script>
+function loadPatients(){
+  var patients = document.querySelector('#patients').value;
+  Swal.fire({
+  icon: "info",
+  title: "The List of Admitted Patients",
+  html: patients });
+}
+</script>
 
 </html>

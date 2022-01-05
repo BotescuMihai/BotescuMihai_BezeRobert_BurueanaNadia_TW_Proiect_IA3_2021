@@ -3,6 +3,16 @@ from json import *
 from re import compile, findall 
 import os
 
+
+
+
+def our_hash(text:str):
+  hash=0
+  for ch in text:
+    hash = ( hash*281  ^ ord(ch)*997) & 0xFFFFFFFF
+  return hash
+
+
 def check_account_credentials(email,password,file_name):
   valid = False
   function = None 
@@ -10,7 +20,7 @@ def check_account_credentials(email,password,file_name):
     with open(file_name,'r') as f:
       datas = load(f)
       for data in datas:
-        if data['email'] == email and data['password'] == password:
+        if data['email'] == email and data['password'] == our_hash(password):
           valid = True
           function = data['role']
           break
@@ -39,14 +49,12 @@ def extract_name(email):
   return finalnameres
 
 
-
-
 def write_data_toJSON(filename,data):
   size = os.path.getsize(filename)
   if size == 0:
     datas = list()
     datas.append(data)
-    with open(filename, "w") as f:
+    with open(filename, "w+") as f:
       dump(datas, f)
   else:
     with open(filename, "r") as f:
@@ -54,3 +62,37 @@ def write_data_toJSON(filename,data):
     datas.append(data)
     with open(filename, "w") as f:
       dump(datas, f)
+
+def get_doctors():
+  with open('data_files/accounts.json','r') as f:
+    datas = load(f)
+    return ''.join([extract_name(data['email']) + '<br>' for data in datas if data['role'] == 'doctor'])
+
+def get_nurses():
+  with open('data_files/accounts.json','r') as f:
+    datas = load(f)
+    return ''.join([extract_name(data['email']) + '<br>' for data in datas if data['role'] == 'nurse'])
+
+
+def get_receptionists():
+  with open('data_files/accounts.json','r') as f:
+    datas = load(f)
+    return ''.join([extract_name(data['email'])  + '<br>' for data in datas if data['role'] == 'receptionist'])
+
+def get_doctors_pacients(name):
+  with open('data_files/patients_appointments_unencrypted.json','r') as f:
+    datas = load(f)
+    s = '<ul>'
+    s += ''.join(['<li>' + data['name'] + ' ' + data['date'] + ' ' + data['time'] + ' Message: ' + data['message'] + '</li>' for data in datas if data['doctor'] == name])
+    s += '</ul>'
+    return s
+
+
+def get_patients():
+  with open('data_files/pacients.json','r') as f:
+    datas = load(f)
+    s = '<ul>'
+    s += ''.join(['<li>' + data['name'] + '; DOB:' + data['date'] + '; Insurance ID:' + data['insuranceid']  + '</li>' for data in datas])
+    s += '</ul>'
+    return s
+  
